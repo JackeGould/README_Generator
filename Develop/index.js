@@ -12,58 +12,57 @@ const { writeFile } = require('fs').promises;
 
 const promptUser = () => {
     return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'title',
-      message: 'What is your READEME title?',
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: 'Please enter a description.',
-      },
-      {
-        type: 'input',
-        name: 'installation',
-        message: 'Please enter your installation instructions.',
-      },
-      {
-        type: 'input',
-        name: 'usage',
-        message: 'Please enter your usage information.',
-      },
-      {
-        type: 'input',
-        name: 'contribution',
-        message: 'Please enter your contribution guidelines.',
-      },
-      {
-        type: 'input',
-        name: 'test',
-        message: 'Please enter your test instructions',
-      },
-    {
-      type: 'list',
-      message: 'Please choose a license.',
-      name: 'license',
-      choices: ['MIT License', 'The Unlicense', 'Mozilla Public License 2.0'],
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: 'Please add your GitHub username.',
-      },
-      {
-        type: 'input',
-        name: 'email',
-        message: 'Please enter your email address',
-      },
-]);
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is your READEME title?',
+        },
+        {
+            type: 'input',
+            name: 'description',
+            message: 'Please enter a description.',
+        },
+        {
+            type: 'input',
+            name: 'installation',
+            message: 'Please enter your installation instructions.',
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'Please enter your usage information.',
+        },
+        {
+            type: 'input',
+            name: 'contribution',
+            message: 'Please enter your contribution guidelines.',
+        },
+        {
+            type: 'input',
+            name: 'test',
+            message: 'Please enter your test instructions',
+        },
+        {
+            type: 'list',
+            message: 'Please choose a license.',
+            name: 'license',
+            choices: ['MIT License', 'The Unlicense', 'Mozilla Public License 2.0'],
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Please add your GitHub username.',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Please enter your email address',
+        },
+    ]);
 };
 
-  const generateReadMe = ({ title, description, installation, usage, contribution, test, license, github, email }) =>
-  `
-  [![License](https://img.shields.io/badge/license-${license}-brightgreen)](https://opensource.org/licenses/${license})<br />
+const generateReadMe = ({ title, description, installation, usage, contribution, test, license, github, email }) =>
+    `
 
   # ${title}
 
@@ -97,9 +96,7 @@ const promptUser = () => {
   
   ## License 
   
-  [![License](https://img.shields.io/badge/license-${license}-brightgreen)](https://opensource.org/licenses/${license})
-  <br />
-  This application is covered by the [${license}](https://opensource.org/licenses/${license}) license.
+  ${renderLicenseBadge(license)}
   
   ## Questions 
 
@@ -111,16 +108,24 @@ const promptUser = () => {
   
   `;
 
-  const init = () => {
+const init = () => {
     promptUser()
-      // Use writeFile method imported from fs.promises to use promises instead of
-      // a callback function
-      .then((answers) => writeFile('readme.md', generateReadMe(answers)))
-      .then(() => console.log('Successfully wrote to readme.md'))
-      .catch((err) => console.error(err));
-  };
-  
-  init();
+        // Use writeFile method imported from fs.promises to use promises instead of
+        // a callback function
+        .then((answers) => writeFile('readme.md', generateReadMe(answers)))
+        .then(() => console.log('Successfully wrote to readme.md'))
+        .catch((err) => console.error(err));
+};
+
+function renderLicenseBadge(license) {
+    if (license) {
+        return `![License](https://img.shields.io/badge/license-${license}-blue.svg)`;
+    } else {
+        return '';
+    }
+}
+
+init();
 
 
 

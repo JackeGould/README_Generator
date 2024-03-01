@@ -103,7 +103,7 @@ const promptUser = () => {
   
   ## Questions 
 
-  If you have any additional questions regarding this respository, please feel free to reach me via the email address provided above.
+  If you have any additional questions regarding this respository, please feel free to reach me via the email address provided below.
   
   ${github}
   

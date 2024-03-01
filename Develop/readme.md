@@ -1,7 +1,7 @@
 
   [![License](https://img.shields.io/badge/license-MIT License-brightgreen)](https://opensource.org/licenses/MIT License)<br />
 
-  # TEST
+  # T
 
   ## Description
 
@@ -39,10 +39,10 @@
   
   ## Questions 
 
-  If you have any additional questions regarding this respository, please feel free to reach me via the email address provided above.
+  If you have any additional questions regarding this respository, please feel free to reach me via the email address provided below.
   
-  JackeGould
+  jackegould
   
-  Jmgould913@gmail.com
+  jmgould913@gmail.com
   
   

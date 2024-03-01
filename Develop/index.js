@@ -63,6 +63,7 @@ const promptUser = () => {
 
 const generateReadMe = ({ title, description, installation, usage, contribution, test, license, github, email }) =>
     `
+    ![badge](https://img.shields.io/badge/license-${license}-brightgreen)<br />
 
   # ${title}
 
@@ -96,7 +97,9 @@ const generateReadMe = ({ title, description, installation, usage, contribution,
   
   ## License 
   
-  ${renderLicenseBadge(license)}
+  ![badge](https://img.shields.io/badge/license-${license}-brightgreen)
+<br />
+This application is covered by the ${license} license. 
   
   ## Questions 
 
